@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text ,TouchableOpacity, FlatList, ActivityIndicator } from 'react-native'
-import { useRouter } from 'expo-router'
+import { useRouter, Link } from 'expo-router'
 import { COLORS, sizes } from '../../../constants'
 import NearbyJobCard from '../../common/cards/nearby/NearbyJobCard'
 import useFetch from '../../../hooke/useFetch'
@@ -22,15 +22,16 @@ const NearbyJobs = () => {
 <View style={styles.container}>
 
 
+
 <View style={styles.header}>
 <Text style={styles.headerTitle}>
     NearBy Jobs
   </Text>
 
   <TouchableOpacity>
-  <Text style={styles.headerBtn}>
+  <Link style={styles.headerBtn} href='/nearby-jobs/nearby'>
     Show All
-  </Text>
+  </Link>
   </TouchableOpacity>
 </View>
 

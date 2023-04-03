@@ -1,12 +1,14 @@
 import React, {useState} from 'react'
 import { View, Text ,TouchableOpacity, FlatList, ActivityIndicator } from 'react-native'
-import { useRouter , Link} from 'expo-router'
-import { COLORS, sizes } from '../../../constants'
-import PopularJobCard from '../../common/cards/popular/PopularJobCard'
-import useFetch from '../../../hooke/useFetch'
-import styles from './popularjobs.style'
+import { useRouter } from 'expo-router'
+import { COLORS, sizes } from '../../constants/'
+import useFetch from '../../hooke/useFetch'
+import styles from './popular.styles'
+import AllPopularJobsCard from '../../components/common/cards/allPopular/AllPopularJobsCard'
 
-const PopularJobs = () => {
+
+const Popular = () => {
+
 
   const router = useRouter()
 
@@ -31,14 +33,9 @@ const PopularJobs = () => {
 
 <View style={styles.header}>
 <Text style={styles.headerTitle}>
-    Popular Jobs
+All Popular Jobs
   </Text>
 
-  <TouchableOpacity>
-  <Link style={styles.headerBtn} href='/popular-jobs/popular'>
-    Show All
-  </Link>
-  </TouchableOpacity>
 </View>
 
 <View style={styles.cardsContainer}>
@@ -54,17 +51,21 @@ const PopularJobs = () => {
     
   ):(
   <FlatList data={data}
-  horizontal
+
   renderItem={({item}) => (
-    <PopularJobCard item={item} handleCardPress={handleCardPress} selectedJob={selectedJob}/>
+    <AllPopularJobsCard item={item} handleCardPress={handleCardPress} selectedJob={selectedJob} style={styles.popularCard} />
   )}
 
   keyExtractor={item => item?.job_id}/>
   )}
 </View>
 
+
+
+
+
 </View>
   )
 }
 
-export default PopularJobs
+export default Popular
